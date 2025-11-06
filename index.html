@@ -1,0 +1,82 @@
+<script>
+  // En analytics.js
+  ;(function () {
+    // Leer parámetros de la URL del script
+    var scripts = document.getElementsByTagName('script')
+    var currentScript = scripts[scripts.length - 1]
+    var scriptUrl = new URL(currentScript.src)
+
+    var articleId = scriptUrl.searchParams.get('article')
+    var partnerName = scriptUrl.searchParams.get('partner')
+
+    // Configurar y trackear automáticamente
+    if (articleId) {
+      // ... resto del código de tracking
+    }
+  })()
+</script>
+
+<h2>Opción B: Ultra-Simple (1 línea)</h2>
+<script src="https://connectas.org/connectas-analytics.js?article=ID&partner=MEDIO" async></script>
+
+
+¿Cómo se vería en Google Analytics?
+1. En Tiempo Real:
+Verías eventos entrando con:
+
+Nombre del evento: syndicated_article_view
+Parámetros: article_id, partner_name, embed_url, etc.
+
+2. En Reportes Personalizados:
+Podrías crear reportes como:
+Vistas por Artículo Sindicado:
+├─ trump-derechos-humanos: 15,234 vistas
+│  ├─ Efecto Cocuyo: 8,500
+│  ├─ El Tiempo: 4,200
+│  └─ El Espectador: 2,534
+│
+├─ investigacion-corrupcion: 8,901 vistas
+   ├─ La Nación: 5,000
+   └─ Proceso: 3,901
+
+Pasos de Implementación en WordPress
+Paso 1: Subir el archivo JS
+bash/wp-content/themes/tu-tema/js/connectas-analytics.js
+O mejor aún, crear un plugin simple:
+php<?php
+/**
+ * Plugin Name: Connectas Analytics
+ * Description: Tracking de artículos sindicados
+ * Version: 1.0
+ */
+
+function connectas_analytics_enqueue_script() {
+    // Este script NO se carga en tu sitio, 
+    // solo lo usan los aliados
+}
+
+// Endpoint para servir el JS
+add_action('init', function() {
+    if (strpos($_SERVER['REQUEST_URI'], '/analytics/connectas-analytics.js') !== false) {
+        header('Content-Type: application/javascript');
+        header('Cache-Control: public, max-age=3600');
+        readfile(__DIR__ . '/connectas-analytics.js');
+        exit;
+    }
+});
+Paso 2: Obtener tu Measurement ID de GA4
+
+Ir a Google Analytics > Admin
+En la propiedad, buscar "Data Streams"
+Copiar el Measurement ID (formato: G-XXXXXXXXXX)
+Reemplazarlo en el script donde dice var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+
+Paso 3: Crear Custom Dimensions en GA4
+Para poder filtrar/reportar por estos campos:
+
+GA4 > Admin > Custom Definitions
+Crear dimensiones:
+
+article_id
+partner_name
+embed_url
