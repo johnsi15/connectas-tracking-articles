@@ -1,22 +1,20 @@
 /**
- * Connectas Analytics Tracker - WordPress + Google Analytics Version
+ * Connectas Analytics Tracker - Google Analytics Version
  * Envía eventos de vistas desde sitios aliados directamente a GA de Connectas
- * Versión: 1.0.0
+ * Versión: 1.2.0
  */
 ;(function (window, document) {
   'use strict'
 
   var NAMESPACE = '_connectas_analytics'
-  var VERSION = '1.0.0'
+  const VERSION = '1.2.0'
 
-  // Tu Measurement ID de Google Analytics 4
-  // Los aliados NO necesitan cambiarlo
-  var GA_MEASUREMENT_ID = 'G-P2MB746CNJ' // Reemplazar con el tuyo
+  var GA_MEASUREMENT_ID = 'G-P2MB746CNJ' // ID GA4 de Connectas
 
   if (window[NAMESPACE]) return
 
   var config = {
-    debug: true, // Activado para ver logs en consola
+    debug: true, // Desactivar cuando esté en producción
     gaLoaded: false,
   }
 
@@ -53,6 +51,7 @@
           article: articleId,
           partner: partnerName,
           scriptUrl: currentScript.src,
+          version: VERSION,
         })
       }
 
