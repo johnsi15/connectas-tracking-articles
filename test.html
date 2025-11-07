@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prueba de Tracking - Connectas Analytics</title>
+
+    <!-- Script de tracking de Connectas -->
+    <script src="/connectas-analytics.js?article=test-article-2025&partner=Medio%20de%20Prueba" async></script>
+
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 2.5em;
+      }
+
+      .header p {
+        margin: 10px 0 0 0;
+        opacity: 0.9;
+      }
+
+      .content {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .tracking-info {
+        background: #e8f5e9;
+        border-left: 4px solid #4caf50;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+      }
+
+      .tracking-info h3 {
+        margin-top: 0;
+        color: #2e7d32;
+      }
+
+      .code-block {
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        overflow-x: auto;
+        margin: 15px 0;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 40px;
+        color: #666;
+        font-size: 14px;
+      }
+
+      .status {
+        display: inline-block;
+        padding: 10px 20px;
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>🧪 Página de Prueba - Connectas Analytics</h1>
+      <p>Esta página simula un artículo publicado en un medio aliado</p>
+    </div>
+
+    <div class="content">
+      <div class="tracking-info">
+        <h3>📊 Información de Tracking</h3>
+        <p><strong>Script cargado:</strong> <code>connectas-analytics.js</code></p>
+        <p><strong>Parámetros:</strong></p>
+        <ul>
+          <li><code>article=test-article-2024</code></li>
+          <li><code>partner=Medio%20de%20Prueba</code></li>
+        </ul>
+      </div>
+
+      <div class="status">
+        <strong>Estado:</strong> Si ves esta página, el script se está cargando. Revisa la consola del navegador (F12)
+        para mensajes de debug.
+      </div>
+
+      <h2>Contenido de Ejemplo</h2>
+      <p>
+        Este es un artículo de ejemplo para probar el sistema de tracking de Connectas. El script de analytics se carga
+        automáticamente cuando la página se abre.
+      </p>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
+      </p>
+
+      <h3>¿Cómo funciona?</h3>
+      <p>El script <code>connectas-analytics.js</code> detecta automáticamente:</p>
+      <ul>
+        <li>El ID del artículo desde el parámetro <code>article</code></li>
+        <li>El nombre del medio aliado desde el parámetro <code>partner</code></li>
+        <li>La URL actual de la página</li>
+        <li>El referrer (de dónde viene el usuario)</li>
+      </ul>
+
+      <div class="code-block">
+        &lt;script
+        src="https://www.connectas.org/connectas-analytics.js?article=test-article-2025&partner=Medio%20de%20Prueba"
+        async&gt;&lt;/script&gt;
+      </div>
+
+      <p>Una vez cargado, envía un evento <code>syndicated_article_view</code> a Google Analytics de Connectas.</p>
+    </div>
+
+    <div class="footer">
+      <p>Prueba realizada el 7 de noviembre de 2025</p>
+    </div>
+  </body>
+</html>
