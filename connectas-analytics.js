@@ -28,7 +28,6 @@
     const scripts = document.getElementsByTagName('script')
     let currentScript = null
 
-    // Buscar el script de connectas-analytics específicamente
     for (var i = 0; i < scripts.length; i++) {
       if (scripts[i].src && scripts[i].src.indexOf('connectas-analytics.js') !== -1) {
         currentScript = scripts[i]
@@ -153,15 +152,13 @@
     }
 
     const eventParams = {
-      // Parámetros personalizados
       article_id: data.article.id,
-      article_title: data.article.title || '',
       partner_name: data.partner ? data.partner.name : 'unknown',
       embed_url: window.location.href,
-      embed_referrer: document.referrer,
+      // article_title: data.article.title || '',
+      // embed_referrer: document.referrer,
 
       // Parámetros estándar de GA
-      page_location: window.location.href,
       page_referrer: document.referrer,
       page_title: document.title,
     }
@@ -177,13 +174,6 @@
     if (config.debug) {
       console.log('Connectas Analytics: Event sent to GA', eventParams)
     }
-
-    // pageview virtual -> para que aparezca en reportes estándar
-    // window.gtag('event', 'page_view', {
-    //   page_location: data.article.url, // URL del artículo en Connectas
-    //   page_title: data.article.title + ' (via ' + (data.partner ? data.partner.name : 'partner') + ')',
-    //   page_referrer: window.location.href, // De dónde viene (sitio del aliado)
-    // })
   }
 
   /**
