@@ -90,6 +90,9 @@
     window.gtag('config', GA_MEASUREMENT_ID, {
       send_page_view: false, // No enviar pageview automático
       cookie_flags: 'SameSite=None;Secure',
+      cookie_domain: 'auto',
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
     })
 
     config.gaLoaded = true
@@ -161,6 +164,7 @@
       // Parámetros estándar de GA
       page_referrer: document.referrer,
       page_title: document.title,
+      transport_type: 'beacon',
     }
 
     // Agregar tags si existen
