@@ -175,6 +175,12 @@
     // Enviar evento personalizado a GA
     window.gtag('event', 'syndicated_article_view', eventParams)
 
+    window.gtag('event', 'page_view', {
+      page_location: window.location.href,
+      page_title: document.title,
+      page_referrer: document.referrer,
+    })
+
     if (config.debug) {
       console.log('Connectas Analytics: Event sent to GA', eventParams)
     }
