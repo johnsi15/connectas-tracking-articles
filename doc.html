@@ -4,25 +4,23 @@
     <meta charset="UTF-8" />
     <title>Trump y Derechos Humanos - Efecto Cocuyo</title>
 
-    <!-- 
-    ============================================
-    VERSIÓN ULTRA-SIMPLE
-    El aliado SOLO tiene que cambiar los parámetros en la URL del script
-    ============================================
-  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 
     <!-- TODO LO QUE NECESITA EL ALIADO (1 SOLA LÍNEA): -->
     <script
-      src="https://www.connectas.org/analytics.js?article=trump-derechos-humanos-2024&partner=Efecto%20Cocuyo"
+      src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-derechos-humanos-2024&partner=Efecto%20Cocuyo"
       async
     ></script>
     <!-- ⬆️ Solo cambiar "partner=Efecto%20Cocuyo" por el nombre de su medio -->
 
-    <!-- FIN - Eso es TODO -->
-
     <style>
       body {
-        font-family: system-ui, -apple-system, sans-serif;
+        font-family: 'Inter', sans-serif;
         max-width: 800px;
         margin: 40px auto;
         padding: 0 20px;
@@ -41,17 +39,22 @@
         margin: 30px 0;
       }
       .code-box {
-        background: #f5f5f5;
-        border: 1px solid #ddd;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
         padding: 15px;
-        font-family: 'Courier New', monospace;
         overflow-x: auto;
         margin: 20px 0;
+        border-radius: 4px;
+      }
+      .code-box pre {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.4;
       }
     </style>
   </head>
   <body>
-    <h1>Versión Ultra-Simple del Tracking</h1>
+    <h1>Versión 1.2.0 del Tracking</h1>
 
     <div class="info-box">
       <h2>📌 Para los aliados de Connectas:</h2>
@@ -59,9 +62,7 @@
     </div>
 
     <div class="code-box">
-      &lt;script
-      src="https://www.connectas.org/analytics.js?<strong>article=trump-derechos-humanos-2024</strong>&amp;<strong>partner=NOMBRE_DEL_MEDIO</strong>"
-      async&gt;&lt;/script&gt;
+      <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-derechos-humanos-2024&amp;partner=NOMBRE_DEL_MEDIO" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <h3>Instrucciones:</h3>
@@ -71,7 +72,7 @@
         Reemplazar <code>NOMBRE_DEL_MEDIO</code> por el nombre de su medio
         <ul>
           <li>Ejemplo: <code>partner=El%20Tiempo</code></li>
-          <li>Ejemplo: <code>partner=Efecto%20Cocuyo</code></li>
+          <li>Ejemplo: <code>partner=La%20Opinión</code></li>
           <li>Nota: Los espacios se reemplazan con <code>%20</code></li>
         </ul>
       </li>
@@ -83,49 +84,55 @@
 
     <div class="code-box">
       <strong>El Tiempo:</strong><br />
-      &lt;script
-      src="https://www.connectas.org/analytics.js?article=trump-derechos-humanos-2024&amp;partner=El%20Tiempo"
-      async&gt;&lt;/script&gt;
+      <pre><code class="language-html">&lt;script
+      src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-derechos-humanos-2024&amp;partner=El%20Tiempo"
+      async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <div class="code-box">
       <strong>La Nación (Costa Rica):</strong><br />
-      &lt;script
-      src="https://www.connectas.org/analytics.js?article=trump-derechos-humanos-2024&amp;partner=La%20Nacion"
-      async&gt;&lt;/script&gt;
+      <pre><code class="language-html">&lt;script
+      src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-derechos-humanos-2024&amp;partner=La%20Nacion"
+      async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <div class="code-box">
       <strong>Animal Político:</strong><br />
-      &lt;script
-      src="https://www.connectas.org/analytics.js?article=trump-derechos-humanos-2024&amp;partner=Animal%20Politico"
-      async&gt;&lt;/script&gt;
+      <pre><code class="language-html">&lt;script
+      src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-derechos-humanos-2024&amp;partner=Animal%20Politico"
+      async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <hr style="margin: 40px 0" />
 
-    <h2>Ventajas de esta versión:</h2>
-    <ul>
-      <li>✅ Solo 1 línea de código</li>
-      <li>✅ Cambio mínimo (solo el nombre del medio)</li>
-      <li>✅ Imposible equivocarse con comillas o sintaxis</li>
-      <li>✅ El script detecta TODO automáticamente (URL, título, referrer, etc.)</li>
-      <li>✅ No bloquea la carga de la página (<code>async</code>)</li>
-    </ul>
+    <h2>📝 Integración en WordPress</h2>
+    <p>
+      Si usas WordPress, puedes insertar el script directamente en el contenido de una entrada o página usando un bloque
+      HTML personalizado. Esto es útil si no quieres modificar el tema globalmente.
+    </p>
 
-    <hr style="margin: 40px 0" />
-
-    <h2>🔧 Cómo funciona por detrás:</h2>
-    <p>El script <code>analytics.js</code> lee los parámetros de la URL y automáticamente:</p>
+    <h3>Pasos para insertar en WordPress:</h3>
     <ol>
-      <li>Detecta el ID del artículo (<code>article=...</code>)</li>
-      <li>Detecta el nombre del medio aliado (<code>partner=...</code>)</li>
-      <li>Captura la URL actual donde está embebido</li>
-      <li>Captura el título de la página</li>
-      <li>Captura el referrer</li>
-      <li>Envía todo a Google Analytics de Connectas</li>
+      <li>Abre la entrada o página en el editor de WordPress (Gutenberg).</li>
+      <li>Agrega un bloque "HTML personalizado" (busca "HTML" en la barra de búsqueda de bloques).</li>
+      <li>Pega el siguiente código en el bloque:</li>
     </ol>
 
-    <p><em>El aliado no necesita saber nada de esto, solo pegar 1 línea. 🎉</em></p>
+    <div class="code-box">
+      <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-contra-los-derechos-humanos-sus-ecos-en-el-continente&amp;partner=Medio%20de%20Prueba" async&gt;&lt;/script&gt;</code></pre>
+    </div>
+
+    <p><strong>Notas:</strong></p>
+    <ul>
+      <li>
+        Cambia los parámetros <strong><code>article</code></strong> y <strong><code>partner</code></strong> según
+        corresponda.
+      </li>
+      <li>El script se cargará de forma asíncrona, por lo que no bloqueará la carga de la página.</li>
+      <li>
+        Si prefieres insertarlo globalmente, usa un plugin como "Insert Headers and Footers" para agregarlo en el
+        <code>&lt;head&gt;</code> de todas las páginas.
+      </li>
+    </ul>
   </body>
 </html>
