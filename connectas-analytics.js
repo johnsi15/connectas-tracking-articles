@@ -86,7 +86,6 @@
     }
     window.gtag('js', new Date())
 
-    // Configurar GA con cookie_flags para third-party context
     window.gtag('config', GA_MEASUREMENT_ID, {
       send_page_view: false, // No enviar pageview automático
       cookie_flags: 'SameSite=None;Secure',
@@ -131,7 +130,7 @@
 
       if (!config.gaLoaded) {
         loadGoogleAnalytics()
-        // Esperar un poco a que cargue GA
+
         setTimeout(function () {
           sendToGA()
         }, 1000)
@@ -158,9 +157,6 @@
       article_id: data.article.id,
       partner_name: data.partner ? data.partner.name : 'unknown',
       embed_url: window.location.href,
-      // article_title: data.article.title || '',
-      // embed_referrer: document.referrer,
-
       // Parámetros estándar de GA
       page_referrer: document.referrer,
       page_title: document.title,
