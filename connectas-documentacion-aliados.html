@@ -38,6 +38,22 @@
         overflow-x: auto;
         margin: 20px 0;
         border-radius: 4px;
+        position: relative;
+      }
+      .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+      .copy-btn:hover {
+        background: #0056b3;
       }
       .code-box pre {
         margin: 0;
@@ -60,6 +76,8 @@
     </div>
 
     <div class="code-box">
+      <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+      <strong>Ejemplo:</strong><br />
       <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-derechos-humanos-2024&amp;partner=NOMBRE_DEL_MEDIO" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
@@ -106,16 +124,19 @@
     <h3>Ejemplos de uso:</h3>
 
     <div class="code-box">
+      <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
       <strong>El Tiempo:</strong><br />
       <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-derechos-humanos-2024&amp;partner=El%20Tiempo" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <div class="code-box">
+      <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
       <strong>La Opinión:</strong><br />
       <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=tenemos-un-equipo-muy-competitivo-que-esta-dispuesto-dar-el-mil-por-ciento&amp;partner=La%20Opinión" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <div class="code-box">
+      <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
       <strong>El Espectador:</strong><br />
       <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=luis-arce-las-tierras-que-su-hijo-convirtio-en-monocultivos-con-ayuda-estatal&amp;partner=El%20Espectador" async&gt;&lt;/script&gt;</code></pre>
     </div>
@@ -136,6 +157,8 @@
     </ol>
 
     <div class="code-box">
+      <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+      <strong>Ejemplo:</strong><br />
       <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-contra-los-derechos-humanos-sus-ecos-en-el-continente&amp;partner=Medio%20de%20Prueba" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
@@ -156,4 +179,26 @@
       </li>
     </ul>
   </body>
+  <script>
+    function copyToClipboard(button) {
+      const codeElement = button.parentElement.querySelector('code')
+      const textToCopy = codeElement ? codeElement.textContent : ''
+      navigator.clipboard
+        .writeText(textToCopy)
+        .then(() => {
+          const originalText = button.textContent
+          button.textContent = 'Copiado!'
+          button.style.background = '#28a745'
+          setTimeout(() => {
+            button.textContent = originalText
+            button.style.background = '#007bff'
+          }, 2000)
+        })
+        .catch(err => {
+          console.error('Error al copiar: ', err)
+          button.textContent = 'Error'
+          setTimeout(() => (button.textContent = 'Copiar'), 2000)
+        })
+    }
+  </script>
 </html>
