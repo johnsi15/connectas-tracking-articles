@@ -135,40 +135,17 @@ gtag('event', 'syndicated_article_view', {
 });</code></pre>
     </div>
 
-    <h2>⚙️ Configuración para Reportes en GA</h2>
-    <p>
-      Para que los reportes funcionen correctamente, es necesario configurar Google Analytics en la cuenta de Connectas.
-      Aquí los pasos:
-    </p>
-    <ol>
+    <h2>⚙️ Configuración Actual en GA de Connectas</h2>
+    <p>La configuración ya está implementada en Google Analytics con:</p>
+    <ul>
+      <li><strong>Evento personalizado:</strong> <code class="language-html">syndicated_article_view</code></li>
       <li>
-        <strong>Configurar Eventos Personalizados:</strong>
-        <ul>
-          <li>Crear un evento personalizado llamado <code class="language-html">article_view</code>.</li>
-          <li>
-            Definir parámetros personalizados: <code class="language-html">article</code>,
-            <code class="language-html">partner</code>, <code class="language-html">page_title</code>,
-            <code class="language-html">page_url</code>, <code class="language-html">referrer</code>.
-          </li>
-        </ul>
+        <strong>Dimensiones:</strong> <code class="language-html">article_id</code>,
+        <code class="language-html">partner_name</code>, <code class="language-html">embed_url</code>,
+        <code class="language-html">page_title</code>, <code class="language-html">page_referrer</code>
       </li>
-      <li>
-        <strong>Segmentación por Medio Aliado:</strong> Usar el parámetro
-        <code class="language-html">partner</code> para filtrar datos por medio.
-      </li>
-      <li>
-        <strong>Segmentación por Artículo:</strong> Usar el parámetro <code class="language-html">article</code> para
-        agrupar vistas por artículo específico.
-      </li>
-      <li>
-        <strong>Configurar Goals o Conversiones:</strong> Si se desea, configurar goals basados en el evento
-        <code class="language-html">article_view</code> para medir engagement.
-      </li>
-      <li>
-        <strong>Acceso a Datos:</strong> Asegurarse de que la cuenta de GA tenga permisos para acceder a los datos en
-        tiempo real y reportes históricos.
-      </li>
-    </ol>
+      <li><strong>Métricas utilizadas en reportes:</strong> Event count, engagement rate, total users.</li>
+    </ul>
 
     <div class="warning-box">
       <h3>⚠️ Importante</h3>
@@ -187,24 +164,24 @@ gtag('event', 'syndicated_article_view', {
     <h3>1. Vista General de Artículos</h3>
     <p>Muestra un resumen de todas las vistas de artículos, agrupadas por artículo y medio aliado.</p>
     <ul>
-      <li><strong>Métricas:</strong> Total de vistas, vistas únicas, tiempo promedio en página.</li>
-      <li><strong>Dimensiones:</strong> Artículo (ID), Medio Aliado, Fecha.</li>
+      <li><strong>Métricas:</strong> Event count, total users.</li>
+      <li><strong>Dimensiones:</strong> Artículo (ID), Medio Aliado.</li>
       <li><strong>Uso:</strong> Para obtener una visión general del rendimiento de todos los artículos compartidos.</li>
     </ul>
 
     <h3>2. Reporte por Medio Aliado Top</h3>
     <p>Ranking de medios aliados por número de vistas totales.</p>
     <ul>
-      <li><strong>Métricas:</strong> Total de vistas por medio, porcentaje del total.</li>
-      <li><strong>Dimensiones:</strong> Medio Aliado, Número de artículos compartidos.</li>
+      <li><strong>Métricas:</strong> Event count, total users, engagement rate.</li>
+      <li><strong>Dimensiones:</strong> Medio Aliado.</li>
       <li><strong>Uso:</strong> Identificar los aliados más activos y medir el alcance por medio.</li>
     </ul>
 
     <h3>3. Reporte Detallado: URLs de Embed</h3>
     <p>Lista detallada de todas las URLs donde se ha embedido el script, con métricas por página.</p>
     <ul>
-      <li><strong>Métricas:</strong> Vistas por URL, referrer, tiempo en página.</li>
-      <li><strong>Dimensiones:</strong> URL completa, Artículo, Medio Aliado, Fecha de embed.</li>
+      <li><strong>Métricas:</strong> Event count por URL, total users.</li>
+      <li><strong>Dimensiones:</strong> URL completa, Artículo (ID), Medio Aliado.</li>
       <li>
         <strong>Uso:</strong> Para auditoría y verificación de dónde se está usando el script, y analizar el tráfico por
         fuente.
