@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Documentación del Script de Tracking - Connectas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+      .info-box {
+        background: #e8f5e9;
+        border-left: 4px solid #4caf50;
+        padding: 20px;
+        margin: 30px 0;
+      }
+      .code-box {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        padding: 15px;
+        overflow-x: auto;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+      .code-box pre {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Versión 1.2.0 del Tracking</h1>
+
+    <div class="info-box">
+      <h2>📌 Para los aliados de Connectas:</h2>
+      <p>
+        Como aliado de Connectas, solo necesitas copiar y pegar esta línea de código en la parte de arriba de tu página
+        web (en el <code class="language-html">&lt;head&gt;</code>). Este script nos permite medir las visitas al
+        artículo del especial de manera precisa, para que podamos analizar el alcance e impacto de nuestra colaboración
+        conjunta.
+      </p>
+    </div>
+
+    <div class="code-box">
+      <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-derechos-humanos-2024&amp;partner=NOMBRE_DEL_MEDIO" async&gt;&lt;/script&gt;</code></pre>
+    </div>
+
+    <h3>Instrucciones:</h3>
+    <ol>
+      <li>Copiar la línea de arriba</li>
+      <li>
+        Reemplazar <code class="language-html">NOMBRE_DEL_MEDIO</code> por el nombre de su medio
+        <ul>
+          <li>Ejemplo: <code class="language-html">partner=El%20Tiempo</code></li>
+          <li>Ejemplo: <code class="language-html">partner=La%20Opinión</code></li>
+          <li>Nota: Los espacios se reemplazan con <code class="language-html">%20</code></li>
+        </ul>
+      </li>
+      <li>Pegarlo en la parte de arriba de la página (en el <code class="language-html">&lt;head&gt;</code>)</li>
+      <li>¡Listo! ✅</li>
+    </ol>
+
+    <hr style="margin: 40px 0" />
+
+    <h2>⚠️ Notas Importantes</h2>
+    <ul>
+      <li>
+        <strong>Coloca el script únicamente en la página del artículo del especial:</strong> Este código se encarga de
+        medir las visitas únicamente a esa página específica. No lo pongas en el header general o a nivel global de tu
+        sitio, ya que eso mediría todas las páginas y generaría datos innecesarios para Connectas.
+      </li>
+      <li>
+        <strong>Dónde colocar el script:</strong> Debes ponerlo en la parte de arriba de la página (en el
+        <code class="language-html">&lt;head&gt;</code>), justo antes de cerrar esa sección. Esto asegura que se cargue
+        rápido y mida correctamente desde el inicio. También funciona en el
+        <code class="language-html">&lt;body&gt;</code>, pero el
+        <code class="language-html">&lt;head&gt;</code>
+        es lo recomendado. Como es asíncrono, no afecta la velocidad de carga de tu página.
+      </li>
+      <li>
+        <strong>Cambia los datos requeridos:</strong> Asegúrate de cambiar
+        <code class="language-html">article</code> por el nombre o ID único del artículo del especial, y
+        <code class="language-html">partner</code> por el nombre de tu medio. Si hay espacios, usa
+        <code class="language-html">%20</code> (ejemplo: "Mi Medio" → "Mi%20Medio").
+      </li>
+    </ul>
+
+    <h3>Ejemplos de uso:</h3>
+
+    <div class="code-box">
+      <strong>El Tiempo:</strong><br />
+      <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-derechos-humanos-2024&amp;partner=El%20Tiempo" async&gt;&lt;/script&gt;</code></pre>
+    </div>
+
+    <div class="code-box">
+      <strong>La Opinión:</strong><br />
+      <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=tenemos-un-equipo-muy-competitivo-que-esta-dispuesto-dar-el-mil-por-ciento&amp;partner=La%20Opinión" async&gt;&lt;/script&gt;</code></pre>
+    </div>
+
+    <div class="code-box">
+      <strong>El Espectador:</strong><br />
+      <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=luis-arce-las-tierras-que-su-hijo-convirtio-en-monocultivos-con-ayuda-estatal&amp;partner=El%20Espectador" async&gt;&lt;/script&gt;</code></pre>
+    </div>
+
+    <hr style="margin: 40px 0" />
+
+    <h2>📝 Integración en WordPress</h2>
+    <p>
+      Si usas WordPress, puedes poner el código directamente en el contenido de una entrada o página usando un bloque de
+      HTML.
+    </p>
+
+    <h3>Pasos para insertar en WordPress:</h3>
+    <ol>
+      <li>Abre la entrada o página en el editor de WordPress (Gutenberg).</li>
+      <li>Agrega un bloque "HTML personalizado" (busca "HTML" en la barra de búsqueda de bloques).</li>
+      <li>Pega este código en el bloque:</li>
+    </ol>
+
+    <div class="code-box">
+      <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/johnsi15/connectas-tracking-articles@main/connectas-analytics.js?article=trump-contra-los-derechos-humanos-sus-ecos-en-el-continente&amp;partner=Medio%20de%20Prueba" async&gt;&lt;/script&gt;</code></pre>
+    </div>
+
+    <p><strong>Notas:</strong></p>
+    <ul>
+      <li>
+        Cambia los parámetros <code class="language-html">article</code> y
+        <code class="language-html">partner</code> según corresponda.
+      </li>
+      <li>El código se carga de manera que no hace que tu página tarde más en abrirse.</li>
+      <li>
+        <strong>Importante:</strong> Coloca el código solo en la página del artículo del especial, no a nivel global,
+        para evitar medir páginas innecesarias.
+      </li>
+      <li>
+        Para insertarlo en WordPress, usa un bloque HTML personalizado en el editor de la entrada/página, o un plugin
+        como "Insert Headers and Footers" únicamente para esa página (no globalmente).
+      </li>
+    </ul>
+  </body>
+</html>

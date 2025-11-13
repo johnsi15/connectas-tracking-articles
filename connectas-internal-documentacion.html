@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Documentación Interna - Sistema de Tracking de Artículos - Connectas</title>
+
+    <!-- Google Fonts: Inter para mejor legibilidad -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Prism.js para resaltar sintaxis en fragmentos de código -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+      h2 {
+        color: #34495e;
+        font-size: 1.8em;
+        margin-top: 40px;
+        margin-bottom: 15px;
+      }
+      h3 {
+        color: #34495e;
+        font-size: 1.4em;
+        margin-top: 30px;
+        margin-bottom: 10px;
+      }
+      .info-box {
+        background: #e8f5e9;
+        border-left: 4px solid #4caf50;
+        padding: 20px;
+        margin: 30px 0;
+      }
+      .warning-box {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 20px;
+        margin: 30px 0;
+      }
+      .code-box {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        padding: 15px;
+        overflow-x: auto;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+      .code-box pre {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      ul,
+      ol {
+        margin: 15px 0;
+      }
+      li {
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📊 Documentación Interna - Sistema de Tracking de Artículos</h1>
+    <p><em>Versión 1.2.0 - Para uso interno de Connectas</em></p>
+
+    <div class="info-box">
+      <h2>🎯 Propósito</h2>
+      <p>
+        Esta documentación explica el funcionamiento interno del sistema de tracking de artículos compartidos por medios
+        aliados. Cubre cómo el script envía datos a Google Analytics (GA), la configuración necesaria para reportes y
+        los 3 formularios básicos de reportes implementados.
+      </p>
+    </div>
+
+    <h2>🔧 Cómo Funciona el Script</h2>
+    <p>
+      El script <code class="language-html">connectas-analytics.js</code> es un tracker asíncrono que se inserta en las
+      páginas de artículos de medios aliados. Su funcionamiento es el siguiente:
+    </p>
+    <ol>
+      <li>
+        <strong>Carga Asíncrona:</strong> El script se carga con el atributo <code class="language-html">async</code>,
+        por lo que no bloquea la renderización de la página.
+      </li>
+      <li>
+        <strong>Lectura de Parámetros:</strong> Lee los parámetros de la URL del script:
+        <ul>
+          <li>
+            <code class="language-html">article</code>: ID único del artículo (ej: "trump-derechos-humanos-2024").
+          </li>
+          <li><code class="language-html">partner</code>: Nombre del medio aliado (ej: "Efecto%20Cocuyo").</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Captura de Datos Automática:</strong>
+        <ul>
+          <li>URL actual de la página.</li>
+          <li>Título de la página (<code class="language-html">document.title</code>).</li>
+          <li>Referrer (de dónde viene el usuario).</li>
+          <li>Timestamp de la visita.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Cargar Google Analytics:</strong> Si no está presente, carga automáticamente Google Analytics de
+        Connectas (GA4) en el sitio del aliado.
+      </li>
+      <li>
+        <strong>Envío a GA:</strong> Envía un evento personalizado a Google Analytics de Connectas usando
+        <code>gtag</code>.
+      </li>
+    </ol>
+
+    <div class="code-box">
+      <pre><code class="language-javascript">// Ejemplo de evento enviado a GA
+gtag('event', 'syndicated_article_view', {
+  article_id: 'trump-derechos-humanos-2024',
+  partner_name: 'El Espectador',
+  embed_url: window.location.href,
+  page_title: document.title,
+  page_referrer: document.referrer
+});</code></pre>
+    </div>
+
+    <h2>⚙️ Configuración para Reportes en GA</h2>
+    <p>
+      Para que los reportes funcionen correctamente, es necesario configurar Google Analytics en la cuenta de Connectas.
+      Aquí los pasos:
+    </p>
+    <ol>
+      <li>
+        <strong>Configurar Eventos Personalizados:</strong>
+        <ul>
+          <li>Crear un evento personalizado llamado <code class="language-html">article_view</code>.</li>
+          <li>
+            Definir parámetros personalizados: <code class="language-html">article</code>,
+            <code class="language-html">partner</code>, <code class="language-html">page_title</code>,
+            <code class="language-html">page_url</code>, <code class="language-html">referrer</code>.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Segmentación por Medio Aliado:</strong> Usar el parámetro
+        <code class="language-html">partner</code> para filtrar datos por medio.
+      </li>
+      <li>
+        <strong>Segmentación por Artículo:</strong> Usar el parámetro <code class="language-html">article</code> para
+        agrupar vistas por artículo específico.
+      </li>
+      <li>
+        <strong>Configurar Goals o Conversiones:</strong> Si se desea, configurar goals basados en el evento
+        <code class="language-html">article_view</code> para medir engagement.
+      </li>
+      <li>
+        <strong>Acceso a Datos:</strong> Asegurarse de que la cuenta de GA tenga permisos para acceder a los datos en
+        tiempo real y reportes históricos.
+      </li>
+    </ol>
+
+    <div class="warning-box">
+      <h3>⚠️ Importante</h3>
+      <p>
+        El script carga Google Analytics de Connectas automáticamente en el sitio del aliado, incluso si no tienen GA
+        configurado. Esto asegura que los eventos se envíen correctamente a nuestra cuenta de GA.
+      </p>
+    </div>
+
+    <h2>📈 Reportes Básicos Implementados</h2>
+    <p>
+      Se han creado 3 formularios básicos para generar reportes desde GA. Estos se basan en consultas a la API de GA o
+      vistas personalizadas.
+    </p>
+
+    <h3>1. Vista General de Artículos</h3>
+    <p>Muestra un resumen de todas las vistas de artículos, agrupadas por artículo y medio aliado.</p>
+    <ul>
+      <li><strong>Métricas:</strong> Total de vistas, vistas únicas, tiempo promedio en página.</li>
+      <li><strong>Dimensiones:</strong> Artículo (ID), Medio Aliado, Fecha.</li>
+      <li><strong>Uso:</strong> Para obtener una visión general del rendimiento de todos los artículos compartidos.</li>
+    </ul>
+
+    <h3>2. Reporte por Medio Aliado Top</h3>
+    <p>Ranking de medios aliados por número de vistas totales.</p>
+    <ul>
+      <li><strong>Métricas:</strong> Total de vistas por medio, porcentaje del total.</li>
+      <li><strong>Dimensiones:</strong> Medio Aliado, Número de artículos compartidos.</li>
+      <li><strong>Uso:</strong> Identificar los aliados más activos y medir el alcance por medio.</li>
+    </ul>
+
+    <h3>3. Reporte Detallado: URLs de Embed</h3>
+    <p>Lista detallada de todas las URLs donde se ha embedido el script, con métricas por página.</p>
+    <ul>
+      <li><strong>Métricas:</strong> Vistas por URL, referrer, tiempo en página.</li>
+      <li><strong>Dimensiones:</strong> URL completa, Artículo, Medio Aliado, Fecha de embed.</li>
+      <li>
+        <strong>Uso:</strong> Para auditoría y verificación de dónde se está usando el script, y analizar el tráfico por
+        fuente.
+      </li>
+    </ul>
+
+    <h2>🛠️ Mantenimiento y Actualizaciones</h2>
+    <ul>
+      <li>
+        <strong>Versionado:</strong> Mantener versiones del script en el repo (ej: v1.2.0) para tracking de cambios.
+      </li>
+      <li>
+        <strong>Monitoreo:</strong> Revisar logs de GA regularmente para detectar anomalías (ej: spikes de datos).
+      </li>
+      <li>
+        <strong>Actualizaciones:</strong> Si se cambia la estructura de parámetros, notificar a aliados y actualizar
+        documentación.
+      </li>
+      <li>
+        <strong>Seguridad:</strong> Asegurar que el script no exponga datos sensibles; solo envía información pública.
+      </li>
+    </ul>
+
+    <h2>📞 Soporte</h2>
+    <p>
+      Para dudas técnicas o configuraciones, contactar al equipo de desarrollo. Esta documentación se actualiza con cada
+      nueva versión del sistema.
+    </p>
+  </body>
+</html>
