@@ -41,13 +41,11 @@
     }
 
     try {
-      var scriptUrl = new URL(currentScript.src)
-      var articleId = scriptUrl.searchParams.get('article')
-      var partnerName = scriptUrl.searchParams.get('partner')
+      const scriptUrl = new URL(currentScript.src)
+      const partnerName = scriptUrl.searchParams.get('partner')
 
       if (config.debug) {
         console.log('Connectas Analytics: Parámetros detectados', {
-          article: articleId,
           partner: partnerName,
           scriptUrl: currentScript.src,
           version: VERSION,
@@ -55,7 +53,6 @@
       }
 
       return {
-        articleId: articleId,
         partnerName: partnerName,
       }
     } catch (e) {
@@ -106,7 +103,13 @@
    */
   var handlers = {
     setArticle: function (articleData) {
-      data.article = articleData
+      data.article = {
+        id: articleData.id || window.location.pathname || 'unknown',
+        title: articleData.title || document.title,
+        url: articleData.url || window.location.href,
+        tags: articleData.tags || [],
+      }
+
       if (config.debug) {
         console.log('Connectas Analytics: Article set', articleData)
       }
@@ -218,14 +221,14 @@
   // AUTO-INICIALIZACIÓN: Leer parámetros y trackear automáticamente
   const params = getScriptParams()
 
-  if (params && params.articleId) {
+  if (params && params.partnerName) {
     if (config.debug) {
       console.log('Connectas Analytics: Modo automático activado')
     }
 
     // Configurar artículo
     data.article = {
-      id: params.articleId,
+      id: window.location.pathname || 'unknown',
       title: document.title,
       url: window.location.href,
     }
