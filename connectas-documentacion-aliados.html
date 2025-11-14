@@ -78,7 +78,7 @@
     <div class="code-box">
       <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
       <strong>Ejemplo:</strong><br />
-      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?article=trump-derechos-humanos-2024&amp;partner=NOMBRE_DEL_MEDIO" async&gt;&lt;/script&gt;</code></pre>
+      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?partner=NOMBRE_DEL_MEDIO" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <h3>Instrucciones:</h3>
@@ -101,9 +101,9 @@
     <h2>⚠️ Notas Importantes</h2>
     <ul>
       <li>
-        <strong>Coloca el script únicamente en la página del artículo del especial:</strong> Este código se encarga de
-        medir las visitas únicamente a esa página específica. No lo pongas en el header general o a nivel global de tu
-        sitio, ya que eso mediría todas las páginas y generaría datos innecesarios para Connectas.
+        <strong>Inserta el script solo en la página del artículo:</strong> Este código se encarga de medir las visitas
+        únicamente a esa página específica. No lo pongas en el header general o a nivel global de tu sitio, ya que eso
+        mediría todas las páginas y generaría datos innecesarios para Connectas.
       </li>
       <li>
         <strong>Dónde colocar el script:</strong> Debes ponerlo en la parte de arriba de la página (en el
@@ -114,9 +114,10 @@
         es lo recomendado. Como es asíncrono, no afecta la velocidad de carga de tu página.
       </li>
       <li>
-        <strong>Cambia los datos requeridos:</strong> Asegúrate de cambiar
-        <code class="language-html">article</code> por el nombre o ID único del artículo del especial, y
-        <code class="language-html">partner</code> por el nombre de tu medio. Si hay espacios, usa
+        <strong>Cambia los datos requeridos:</strong> Cambia <code class="language-html">partner</code> por el nombre de
+        tu medio. El <code class="language-html">article</code> se toma automáticamente del pathname de la URL de la
+        página (ej. si la URL es <code>https://tu-sitio.com/articulo-ejemplo</code>, el article será
+        <code>/articulo-ejemplo</code>). Si hay espacios en el nombre del medio, usa
         <code class="language-html">%20</code> (ejemplo: "Mi Medio" → "Mi%20Medio").
       </li>
     </ul>
@@ -126,19 +127,19 @@
     <div class="code-box">
       <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
       <strong>El Tiempo:</strong><br />
-      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?article=trump-derechos-humanos-2025&amp;partner=El%20Tiempo" async&gt;&lt;/script&gt;</code></pre>
+      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?partner=El%20Tiempo" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <div class="code-box">
       <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
       <strong>La Opinión:</strong><br />
-      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?article=tenemos-un-equipo-muy-competitivo-que-esta-dispuesto-dar-el-mil-por-ciento&amp;partner=La%20Opinión" async&gt;&lt;/script&gt;</code></pre>
+      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?partner=La%20Opinión" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <div class="code-box">
       <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
       <strong>El Espectador:</strong><br />
-      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?article=luis-arce-las-tierras-que-su-hijo-convirtio-en-monocultivos-con-ayuda-estatal&amp;partner=El%20Espectador" async&gt;&lt;/script&gt;</code></pre>
+      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?partner=El%20Espectador" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <hr style="margin: 40px 0" />
@@ -159,15 +160,12 @@
     <div class="code-box">
       <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
       <strong>Ejemplo:</strong><br />
-      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?article=trump-contra-los-derechos-humanos-sus-ecos-en-el-continente&amp;partner=Medio%20de%20Prueba" async&gt;&lt;/script&gt;</code></pre>
+      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?partner=Medio%20de%20Prueba" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <p><strong>Notas:</strong></p>
     <ul>
-      <li>
-        Cambia los parámetros <code class="language-html">article</code> y
-        <code class="language-html">partner</code> según corresponda.
-      </li>
+      <li>Cambia el parámetro <code class="language-html">partner</code> según corresponda.</li>
       <li>El código se carga de manera que no hace que tu página tarde más en abrirse.</li>
       <li>
         <strong>Importante:</strong> Coloca el código solo en la página del artículo del especial, no a nivel global,
