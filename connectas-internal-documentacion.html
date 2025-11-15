@@ -71,6 +71,14 @@
       li {
         margin-bottom: 8px;
       }
+      a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>
@@ -99,11 +107,12 @@
       <li>
         <strong>Lectura de Parámetros:</strong> Lee los parámetros de la URL del script:
         <ul>
-          <li>
-            <code class="language-html">article</code>: ID único del artículo (ej: "trump-derechos-humanos-2024").
-          </li>
-          <li><code class="language-html">partner</code>: Nombre del medio aliado (ej: "Efecto%20Cocuyo").</li>
+          <li><code class="language-html">partner</code>: Nombre del medio aliado (ej: "El%20Espectador").</li>
         </ul>
+        <p>
+          <strong>Nota:</strong> El ID del artículo se toma automáticamente del pathname de la URL (ej:
+          "/trump-derechos-humanos-2024").
+        </p>
       </li>
       <li>
         <strong>Captura de Datos Automática:</strong>
@@ -127,7 +136,7 @@
     <div class="code-box">
       <pre><code class="language-javascript">// Ejemplo de evento enviado a GA
 gtag('event', 'syndicated_article_view', {
-  article_id: 'trump-derechos-humanos-2024',
+  article_id: window.location.pathname, // Ej: '/trump-derechos-humanos-2024'
   partner_name: 'El Espectador',
   embed_url: window.location.href,
   page_title: document.title,
@@ -193,9 +202,7 @@ gtag('event', 'syndicated_article_view', {
       <li>
         <strong>Versionado:</strong> Mantener versiones del script en el repo (ej: v1.2.0) para tracking de cambios.
       </li>
-      <li>
-        <strong>Monitoreo:</strong> Revisar logs de GA regularmente para detectar anomalías (ej: spikes de datos).
-      </li>
+      <li><strong>Monitoreo:</strong> Revisar logs de GA regularmente para detectar anomalías.</li>
       <li>
         <strong>Actualizaciones:</strong> Si se cambia la estructura de parámetros, notificar a aliados y actualizar
         documentación.
@@ -207,8 +214,9 @@ gtag('event', 'syndicated_article_view', {
 
     <h2>📞 Soporte</h2>
     <p>
-      Para dudas técnicas o configuraciones, contactar al equipo de desarrollo. Esta documentación se actualiza con cada
-      nueva versión del sistema.
+      Para dudas técnicas o configuraciones, contactar a
+      <a href="mailto:johnserranodev@gmail.com" target="_blank">John Serrano</a>. Esta documentación se actualiza con
+      cada nueva versión del sistema.
     </p>
   </body>
 </html>
