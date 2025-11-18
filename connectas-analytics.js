@@ -65,36 +65,40 @@
    * Cargar Google Analytics si no está presente
    */
   function loadGoogleAnalytics() {
-    if (window.gtag) {
-      config.gaLoaded = true
-      return
-    }
-
-    // Cargar gtag.js
-    var script = document.createElement('script')
-    script.async = true
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID
-    document.head.appendChild(script)
-
-    // Inicializar gtag
     window.dataLayer = window.dataLayer || []
-    window.gtag = function () {
-      window.dataLayer.push(arguments)
+
+    if (!window.gtag) {
+      window.gtag = function () {
+        window.dataLayer.push(arguments)
+      }
     }
+
     window.gtag('js', new Date())
 
     window.gtag('config', GA_MEASUREMENT_ID, {
-      send_page_view: false, // No enviar pageview automático
+      send_page_view: false,
       cookie_flags: 'SameSite=None;Secure',
       cookie_domain: 'auto',
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
     })
 
+    const existingScript = document.querySelector('script[src*="gtag/js?id=' + GA_MEASUREMENT_ID + '"]')
+
+    if (!existingScript) {
+      var script = document.createElement('script')
+      script.async = true
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID
+      document.head.appendChild(script)
+    }
+
     config.gaLoaded = true
 
     if (config.debug) {
       console.log('Connectas Analytics: Google Analytics loaded')
+      console.log('  - dataLayer existía:', hadDataLayer)
+      console.log('  - gtag existía:', hadGtag)
+      console.log('  - Script cargado:', !existingScript)
     }
   }
 
@@ -172,9 +176,13 @@
     }
 
     // Enviar evento personalizado a GA
-    window.gtag('event', 'syndicated_article_view', eventParams)
+    window.gtag('event', 'syndicated_article_view', {
+      send_to: GA_MEASUREMENT_ID,
+      ...eventParams,
+    })
 
     window.gtag('event', 'page_view', {
+      send_to: GA_MEASUREMENT_ID,
       page_location: window.location.href,
       page_title: document.title,
       page_referrer: document.referrer,
@@ -182,6 +190,7 @@
 
     if (config.debug) {
       console.log('Connectas Analytics: Event sent to GA', eventParams)
+      console.log('Connectas Analytics: Target GA4:', GA_MEASUREMENT_ID)
     }
   }
 
