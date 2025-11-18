@@ -65,6 +65,9 @@
    * Cargar Google Analytics si no está presente
    */
   function loadGoogleAnalytics() {
+    const hadDataLayer = !!window.dataLayer
+    const hadGtag = !!window.gtag
+
     window.dataLayer = window.dataLayer || []
 
     if (!window.gtag) {
@@ -83,12 +86,19 @@
       allow_ad_personalization_signals: false,
     })
 
-    const existingScript = document.querySelector('script[src*="gtag/js?id=' + GA_MEASUREMENT_ID + '"]')
+    const existingGtagScript = document.querySelector('script[src*="googletagmanager.com/gtag/js"]')
 
-    if (!existingScript) {
+    if (!existingGtagScript) {
       var script = document.createElement('script')
       script.async = true
       script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID
+
+      script.onload = function () {
+        if (config.debug) {
+          console.log('Connectas Analytics: gtag.js script loaded')
+        }
+      }
+
       document.head.appendChild(script)
     }
 
@@ -96,9 +106,11 @@
 
     if (config.debug) {
       console.log('Connectas Analytics: Google Analytics loaded')
+      console.log('  - Measurement ID:', GA_MEASUREMENT_ID)
       console.log('  - dataLayer existía:', hadDataLayer)
       console.log('  - gtag existía:', hadGtag)
-      console.log('  - Script cargado:', !existingScript)
+      console.log('  - gtag script existía:', !!existingGtagScript)
+      console.log('  - Script nuevo cargado:', !existingGtagScript)
     }
   }
 
