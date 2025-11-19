@@ -1,13 +1,13 @@
 /**
  * Connectas Analytics Tracker - Google Analytics Version
  * Envía eventos de vistas desde sitios aliados directamente a GA de Connectas
- * Versión: 1.2.0
+ * Versión: 1.3.0
  */
 ;(function (window, document) {
   'use strict'
 
   var NAMESPACE = '_connectas_analytics'
-  const VERSION = '1.2.0'
+  const VERSION = '1.3.0'
 
   var GA_MEASUREMENT_ID = 'G-P2MB746CNJ' // ID GA4 de Connectas
 
@@ -23,6 +23,7 @@
 
   /**
    * Leer parámetros de la URL del script
+   * Retrocompatible: detecta partner desde parámetros URL o desde dominio
    */
   function getScriptParams() {
     const scripts = document.getElementsByTagName('script')
@@ -42,11 +43,17 @@
 
     try {
       const scriptUrl = new URL(currentScript.src)
-      const partnerName = scriptUrl.searchParams.get('partner')
+      const partnerFromParams = scriptUrl.searchParams.get('partner')
+
+      const currentDomain = window.location.host || window.location.hostname
+      const partnerName = partnerFromParams
+        ? decodeURIComponent(partnerFromParams)
+        : getPartnerNameFromDomain(currentDomain)
 
       if (config.debug) {
         console.log('Connectas Analytics: Parámetros detectados', {
           partner: partnerName,
+          source: partnerFromParams ? 'URL params' : 'domain',
           scriptUrl: currentScript.src,
           version: VERSION,
         })
@@ -59,6 +66,36 @@
       console.error('Connectas Analytics: Error al parsear URL del script', e)
       return null
     }
+  }
+
+  /**
+   * Extraer nombre del partner desde el dominio
+   * Quita www, puerto y extensión (.com, .co, .org, etc)
+   */
+  function getPartnerNameFromDomain(domain) {
+    if (domain.includes('localhost') || domain.includes('127.0.0.1')) {
+      return 'Testing'
+    }
+
+    if (domain.includes('netlify.app')) {
+      // Para netlify: tomar el subdominio (ej: connectas-test.netlify.app -> connectas-test)
+      const subdomain = domain.split('.')[0]
+      return subdomain.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+    }
+
+    // Limpiar dominio: quitar www y puerto
+    let cleanDomain = domain.replace(/^www\./, '').split(':')[0]
+
+    // Quitar extensiones comunes (.com, .co, .org, .net, .com.ni, etc)
+    cleanDomain = cleanDomain.replace(/\.(com|co|org|net|edu|gov|io)(\.[a-z]{2})*$/i, '')
+
+    const partnerName = cleanDomain.charAt(0).toUpperCase() + cleanDomain.slice(1)
+
+    if (config.debug) {
+      console.log('Connectas Analytics: Partner extraído del dominio:', partnerName)
+    }
+
+    return partnerName
   }
 
   /**
@@ -239,14 +276,14 @@
   // Procesar comandos que se llamaron antes de cargar
   processQueue()
 
-  // AUTO-INICIALIZACIÓN: Leer parámetros y trackear automáticamente
+  // AUTO-INICIALIZACIÓN: Detectar partner y trackear automáticamente
   const params = getScriptParams()
 
-  if (params && params.partnerName) {
-    if (config.debug) {
-      console.log('Connectas Analytics: Modo automático activado')
-    }
+  if (config.debug) {
+    console.log('Connectas Analytics: Modo automático activado')
+  }
 
+  if (params && params.partnerName) {
     // Configurar artículo
     data.article = {
       id: window.location.pathname || 'unknown',
@@ -254,12 +291,9 @@
       url: window.location.href,
     }
 
-    // Configurar partner
-    if (params.partnerName) {
-      data.partner = {
-        name: decodeURIComponent(params.partnerName),
-        url: window.location.hostname,
-      }
+    data.partner = {
+      name: params.partnerName,
+      url: window.location.hostname,
     }
 
     // Cargar GA y enviar evento automáticamente
