@@ -8,6 +8,7 @@ El sistema consta de un script JavaScript (`connectas-analytics.js`) que los med
 
 ### Características principales:
 - ✅ Integración ultra-simple (solo 1 línea de código)
+- ✅ Detección automática del medio aliado por dominio
 - ✅ Compatible con cualquier CMS (WordPress, etc.)
 - ✅ No interfiere con el Google Analytics del aliado
 - ✅ Respeta la privacidad de los usuarios
@@ -16,7 +17,7 @@ El sistema consta de un script JavaScript (`connectas-analytics.js`) que los med
 ## 🚀 Instalación
 
 1. **Subir el script al servidor:**
-   - Coloca `connectas-analytics.js` en tu servidor web (ej: `https://www.connectas.org/analytics.js`)
+   - Coloca `connectas-analytics.js` en tu servidor web (ej: `https://www.connectas.org/especiales/js/connectas-analytics.js`)
    - Asegúrate de que sea accesible vía HTTPS
 
 2. **Configurar Google Analytics:**
@@ -37,16 +38,16 @@ El sistema consta de un script JavaScript (`connectas-analytics.js`) que los med
 Los aliados solo necesitan copiar y pegar esta línea en el `<head>` de su página HTML:
 
 ```html
-<script src="https://www.connectas.org/analytics.js?article=[ARTICLE_ID]&partner=[NOMBRE_MEDIO]" async></script>
+<script src="https://www.connectas.org/especiales/js/connectas-analytics.js" async></script>
 ```
 
-**Parámetros:**
-- `article=[ARTICLE_ID]`: ID único del artículo (ya configurado por Connectas)
-- `partner=[NOMBRE_MEDIO]`: Nombre del medio aliado (reemplazar espacios con `%20`)
+**¡Eso es todo!** El script detecta automáticamente:
+- El nombre del medio desde el dominio (ej: vistazo.com → "Vistazo")
+- El ID del artículo desde el pathname de la URL
 
 **Ejemplo:**
 ```html
-<script src="https://www.connectas.org/analytics.js?article=trump-derechos-humanos-2024&partner=Efecto%20Cocuyo" async></script>
+<script src="https://www.connectas.org/especiales/js/connectas-analytics.js" async></script>
 ```
 
 ### Implementación en diferentes plataformas:
@@ -74,9 +75,34 @@ Vistas por Artículo Sindicado:
 ## 📁 Estructura del proyecto
 
 - `connectas-analytics.js`: Script principal de tracking
-- `doc.html`: Documentación técnica y ejemplos de uso
+- `connectas-documentacion-aliados.html`: Documentación para medios aliados
+- `connectas-internal-documentacion.html`: Documentación interna técnica
 - `email-aliados.md`: Plantilla de email para comunicar con aliados
 - `index.html`: Página de referencia con ejemplos
+
+## 📝 Changelog
+
+### Versión 1.3.0 (2025-11-19)
+**Cambios importantes:**
+- ✅ **Detección automática del partner por dominio**: Ya no es necesario pasar el parámetro `partner` en la URL del script
+- ✅ **Mapeo de dominios a nombres**: Sistema de mapeo interno que convierte dominios (ej: vistazo.com) a nombres de partners (ej: "Vistazo")
+- ✅ **Compatibilidad con GTM**: Mejorada la compatibilidad con sitios que usan Google Tag Manager
+- ✅ **Envío directo a GA4**: Uso de `send_to` para asegurar que eventos lleguen solo a la cuenta de Connectas
+- ✅ **Mejor debugging**: Logs mejorados para diagnóstico de problemas
+- ✅ **Simplificación para aliados**: Ahora solo necesitan una línea sin parámetros
+
+**Migración desde v1.2.0:**
+- El script anterior con `?partner=` sigue funcionando
+- Recomendado migrar a la nueva versión sin parámetros
+- Actualizar documentación compartida con aliados
+
+### Versión 1.2.0
+- Detección automática de article_id desde pathname
+- Eliminación del parámetro `article` en la URL
+
+### Versión 1.1.0
+- Primera versión estable con envío a GA4
+- Modo automático y manual
 
 ## ❓ Preguntas Frecuentes
 
