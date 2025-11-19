@@ -63,7 +63,7 @@
     </style>
   </head>
   <body>
-    <h1>Versión 1.2.0 del Tracking</h1>
+    <h1>Versión 1.3.0 del Tracking</h1>
 
     <div class="info-box">
       <h2>📌 Para los aliados de Connectas:</h2>
@@ -78,22 +78,15 @@
     <div class="code-box">
       <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
       <strong>Ejemplo:</strong><br />
-      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?partner=NOMBRE_DEL_MEDIO" async&gt;&lt;/script&gt;</code></pre>
+      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <h3>Instrucciones:</h3>
     <ol>
       <li>Copiar la línea de arriba</li>
-      <li>
-        Reemplazar <code class="language-html">NOMBRE_DEL_MEDIO</code> por el nombre de su medio
-        <ul>
-          <li>Ejemplo: <code class="language-html">partner=El%20Tiempo</code></li>
-          <li>Ejemplo: <code class="language-html">partner=La%20Opinión</code></li>
-          <li>Nota: Los espacios se reemplazan con <code class="language-html">%20</code></li>
-        </ul>
-      </li>
-      <li>Pegarlo en la parte de arriba de la página (en el <code class="language-html">&lt;head&gt;</code>)</li>
+      <li>Pegarla en la parte de arriba de la página (en el <code class="language-html">&lt;head&gt;</code>)</li>
       <li>¡Listo! ✅</li>
+      <li><strong>Nota:</strong> El sistema detecta automáticamente tu medio por el dominio del sitio web.</li>
     </ol>
 
     <hr style="margin: 40px 0" />
@@ -126,21 +119,14 @@
 
     <div class="code-box">
       <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
-      <strong>El Tiempo:</strong><br />
-      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?partner=El%20Tiempo" async&gt;&lt;/script&gt;</code></pre>
+      <strong>Para cualquier medio:</strong><br />
+      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
-    <div class="code-box">
-      <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
-      <strong>La Opinión:</strong><br />
-      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?partner=La%20Opinión" async&gt;&lt;/script&gt;</code></pre>
-    </div>
-
-    <div class="code-box">
-      <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
-      <strong>El Espectador:</strong><br />
-      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?partner=El%20Espectador" async&gt;&lt;/script&gt;</code></pre>
-    </div>
+    <p>
+      <strong>Nota:</strong> El mismo código funciona para todos los medios aliados. El sistema detecta automáticamente
+      el nombre del medio por el dominio.
+    </p>
 
     <hr style="margin: 40px 0" />
 
@@ -160,12 +146,12 @@
     <div class="code-box">
       <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
       <strong>Ejemplo:</strong><br />
-      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js?partner=Medio%20de%20Prueba" async&gt;&lt;/script&gt;</code></pre>
+      <pre><code class="language-html">&lt;script src="https://www.connectas.org/especiales/js/connectas-analytics.js" async&gt;&lt;/script&gt;</code></pre>
     </div>
 
     <p><strong>Notas:</strong></p>
     <ul>
-      <li>Cambia el parámetro <code class="language-html">partner</code> según corresponda.</li>
+      <li>El sistema detecta automáticamente tu medio por el dominio del sitio.</li>
       <li>El código se carga de manera que no hace que tu página tarde más en abrirse.</li>
       <li>
         <strong>Importante:</strong> Coloca el código solo en la página del artículo del especial, no a nivel global,

@@ -83,7 +83,7 @@
   </head>
   <body>
     <h1>📊 Documentación Interna - Sistema de Tracking de Artículos</h1>
-    <p><em>Versión 1.2.0 - Para uso interno de Connectas</em></p>
+    <p><em>Versión 1.3.0 - Para uso interno de Connectas</em></p>
 
     <div class="info-box">
       <h2>🎯 Propósito</h2>
@@ -105,10 +105,9 @@
         por lo que no bloquea la renderización de la página.
       </li>
       <li>
-        <strong>Lectura de Parámetros:</strong> Lee los parámetros de la URL del script:
-        <ul>
-          <li><code class="language-html">partner</code>: Nombre del medio aliado (ej: "El%20Espectador").</li>
-        </ul>
+        <strong>Detección Automática del Partner:</strong> Detecta automáticamente el nombre del medio desde el dominio
+        del sitio web donde se inserta el script (ej: vistazo.com → "Vistazo"). El script incluye un mapeo de dominios
+        conocidos a nombres de partners.
         <p>
           <strong>Nota:</strong> El ID del artículo se toma automáticamente del pathname de la URL (ej:
           "/trump-derechos-humanos-2024").
