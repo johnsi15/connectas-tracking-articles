@@ -41,13 +41,13 @@ Los aliados solo necesitan copiar y pegar esta línea en el `<head>` de su pági
 <script src="https://www.connectas.org/especiales/js/connectas-analytics.js" async></script>
 ```
 
-**¡Eso es todo!** El script detecta automáticamente:
-- El nombre del medio desde el dominio (ej: vistazo.com → "Vistazo")
-- El ID del artículo desde el pathname de la URL
+**¡Eso es todo!** El script funciona completamente automático y detecta:
+- **Partner (medio aliado):** Desde el dominio del sitio (ej: vistazo.com → "Vistazo", eltiempo.com.co → "Eltiempo")
+- **Article ID:** Desde el pathname de la URL (ej: /articulo-ejemplo → "articulo-ejemplo")
 
-**Ejemplo:**
+**Retrocompatibilidad:** Si necesitas especificar manualmente, puedes usar:
 ```html
-<script src="https://www.connectas.org/especiales/js/connectas-analytics.js" async></script>
+<script src="https://www.connectas.org/especiales/js/connectas-analytics.js?partner=Nombre%20del%20Medio" async></script>
 ```
 
 ### Implementación en diferentes plataformas:

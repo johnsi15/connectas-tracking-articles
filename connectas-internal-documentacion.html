@@ -105,12 +105,13 @@
         por lo que no bloquea la renderización de la página.
       </li>
       <li>
-        <strong>Detección Automática del Partner:</strong> Detecta automáticamente el nombre del medio desde el dominio
-        del sitio web donde se inserta el script (ej: vistazo.com → "Vistazo"). El script incluye un mapeo de dominios
-        conocidos a nombres de partners.
+        <strong>Detección Automática Completa:</strong> El script detecta automáticamente todos los datos necesarios:
+        <ul>
+          <li><strong>Partner (medio aliado):</strong> Extrae el nombre del medio desde el dominio del sitio web (ej: vistazo.com → "Vistazo", eltiempo.com.co → "Eltiempo")</li>
+          <li><strong>Article ID:</strong> Toma automáticamente el ID del artículo desde el pathname de la URL (ej: "/trump-derechos-humanos-2024" → "trump-derechos-humanos-2024")</li>
+        </ul>
         <p>
-          <strong>Nota:</strong> El ID del artículo se toma automáticamente del pathname de la URL (ej:
-          "/trump-derechos-humanos-2024").
+          <strong>Retrocompatibilidad:</strong> Si se incluye el parámetro <code>?partner=</code> en la URL del script, se usa ese valor en lugar de la detección automática.
         </p>
       </li>
       <li>

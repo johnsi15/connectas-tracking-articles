@@ -86,8 +86,20 @@
       <li>Copiar la línea de arriba</li>
       <li>Pegarla en la parte de arriba de la página (en el <code class="language-html">&lt;head&gt;</code>)</li>
       <li>¡Listo! ✅</li>
-      <li><strong>Nota:</strong> El sistema detecta automáticamente tu medio por el dominio del sitio web.</li>
     </ol>
+
+    <div class="info-box">
+      <h4>🔍 ¿Qué hace automáticamente el script?</h4>
+      <p>
+        Una vez insertado, el script funciona completamente automático:
+      </p>
+      <ul>
+        <li><strong>Detecta tu medio:</strong> Identifica automáticamente el nombre de tu medio desde el dominio de tu sitio web (ej: vistazo.com → "Vistazo")</li>
+        <li><strong>Identifica el artículo:</strong> Toma automáticamente el ID del artículo desde la URL de la página (ej: /articulo-ejemplo → "articulo-ejemplo")</li>
+        <li><strong>Envía datos a Connectas:</strong> Registra las visitas en nuestro sistema de Google Analytics para medir el alcance</li>
+      </ul>
+      <p><strong>No necesitas configurar nada más.</strong> El script se encarga de todo automáticamente.</p>
+    </div>
 
     <hr style="margin: 40px 0" />
 
@@ -105,13 +117,6 @@
         <code class="language-html">&lt;body&gt;</code>, pero el
         <code class="language-html">&lt;head&gt;</code>
         es lo recomendado. Como es asíncrono, no afecta la velocidad de carga de tu página.
-      </li>
-      <li>
-        <strong>Cambia los datos requeridos:</strong> Cambia <code class="language-html">partner</code> por el nombre de
-        tu medio. El <code class="language-html">article</code> se toma automáticamente del pathname de la URL de la
-        página (ej. si la URL es <code>https://tu-sitio.com/articulo-ejemplo</code>, el article será
-        <code>/articulo-ejemplo</code>). Si hay espacios en el nombre del medio, usa
-        <code class="language-html">%20</code> (ejemplo: "Mi Medio" → "Mi%20Medio").
       </li>
     </ul>
 
